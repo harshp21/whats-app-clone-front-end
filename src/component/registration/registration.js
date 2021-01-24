@@ -12,14 +12,14 @@ function Registration() {
 
     const onSubmitHandler = async () => {
         const { username, email, password, confirmPassword } = userDetails;
-        if (!ValidatorService.isEmail(email)) {
+        if (username === '') {
+            alert.error('Username cannot be blank');
+        } else if (!ValidatorService.isEmail(email)) {
             alert.error('Please enter an valid email');
-        } else if (!ValidatorService.isValidPassword(password)) {
-            alert.error('Password should be greater than 6');
         } else if (password !== confirmPassword) {
             alert.error('Pasword and confirm password should be same');
-        } else if (username !== '') {
-            alert.error('Username cannot be blank');
+        } else if (!ValidatorService.isValidPassword(password)) {
+            alert.error('Password should be greater than 6');
         } else {
             const user = await auth.signUpUser(userDetails);
             if (user) {

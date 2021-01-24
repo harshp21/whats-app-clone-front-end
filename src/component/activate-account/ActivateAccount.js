@@ -19,8 +19,9 @@ function ActivateAccount() {
             localStorage.setItem('token', result.data.token);
             alert.success(result.data.message);
             history.push('/app');
+        } else {
+            alert.error(result.data.message);
         }
-        alert.error(result.data.message);
     }
 
     return (

@@ -8,7 +8,7 @@ function PageNotFound() {
             <div className="page-not-found__content">
                 <div className="home-btn-container">
                     <Link to="/login">
-                        <div className="home-btn">home</div>
+                        <div className="home-btn">Go Home</div>
                     </Link>
                 </div>
             </div>
