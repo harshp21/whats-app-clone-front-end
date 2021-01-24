@@ -1,0 +1,55 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  flex: 0.7;
+}
+
+.chat__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px;
+  border-bottom: 1px solid lightgrey;
+  padding: 10px;
+}
+
+.chat__header_info {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.chat__body {
+  background-image: url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png);
+  background-repeat: repeat;
+  background-position: center;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chat__footer {
+  display: flex;
+  padding: 5px 20px;
+  justify-content: space-between;
+  border-top: 1px solid lightgrey;
+  align-items: center;
+}
+
+.chat__footer .MuiSvgIcon-root {
+  color: grey;
+}
+.chat__footer_search {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.chat__footer_search input {
+  width: 90%;
+  padding: 10px;
+  border: 0px;
+  outline: none;
+  border-radius: 20px;
+  font-size: 15px;
+}

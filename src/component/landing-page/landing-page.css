@@ -1,0 +1,32 @@
+.form-container {
+  flex: 0.35;
+  display: flex;
+  justify-content: center;
+}
+.form-sideimage {
+  flex: 0.65;
+  background: linear-gradient(rgba(22, 199, 154, 0.3), rgba(0, 230, 64, 0.65)),
+    url("https://www.wallpapertip.com/wmimgs/51-517054_whatsapp-background-images-hd.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.form-title {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  color: #fff;
+  width: 70%;
+}
+
+.form-sideimage__title {
+  font-size: 50px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.form-sideimage__subtitle {
+  font-size: 17px;
+}
