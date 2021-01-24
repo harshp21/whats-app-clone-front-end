@@ -2,11 +2,11 @@ import axios from 'axios';
 import React, { useEffect } from 'react'
 import { useAlert } from 'react-alert';
 import { useHistory, useParams } from 'react-router-dom';
-import './account-activation.css'
+import './account-activation.css';
+import { apiUrl } from '../../context/UserContext';
 
 function ActivateAccount() {
     const params = useParams();
-    const apiUrl = 'http://localhost:5000';
     const history = useHistory();
     const alert = useAlert();
 

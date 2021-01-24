@@ -1,8 +1,9 @@
 import axois from 'axios';
+import { apiUrl } from '../context/UserContext';
 
 class Auth {
     constructor() {
-        this.apiUrl = 'http://localhost:5000';
+        this.apiUrl = apiUrl;
         this.isAuthenticatedUser = false;
         this.isUserLoggedIn();
     }

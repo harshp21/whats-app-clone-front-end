@@ -4,11 +4,10 @@ import Chat from "../chat-message/chat";
 import axios from 'axios';
 import socket from '../../service/socket';
 import './chat-app.css'
-import { UserContext } from "../../context/UserContext";
+import { UserContext, apiUrl } from "../../context/UserContext";
 
 const ChatApp = () => {
 
-    const apiUrl = 'http://localhost:5000';
     const [messages, setMessages] = useState([]);
     const [groups, setGroups] = useState([]);
     const [selectedGroup, setSelectedGroup] = useState({});

@@ -23,7 +23,6 @@ function App() {
 
   return (
     <>
-      {/* <UserContext.Provider value={{ userState, dispatch }}> */}
       <Provider template={AlertTemplate} {...options}>
         <BrowserRouter>
           <Switch>
@@ -34,7 +33,6 @@ function App() {
           </Switch>
         </BrowserRouter>
       </Provider>
-      {/* </UserContext.Provider> */}
     </>
 
   );
