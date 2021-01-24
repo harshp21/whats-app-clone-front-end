@@ -1,17 +1,25 @@
 import { Avatar, IconButton } from '@material-ui/core';
-import { AttachFile, InsertEmoticon, MoreVert } from '@material-ui/icons';
+import { AttachFile, InsertEmoticon } from '@material-ui/icons';
 import SearchIcon from '@material-ui/icons/Search';
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import './chat.css';
 import SendIcon from '@material-ui/icons/Send';
 import Message from '../message/message';
 import { UserContext } from '../../context/UserContext';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import auth from '../../service/auth';
+import { useAlert } from 'react-alert';
+import { useHistory } from 'react-router-dom';
 
 const Chat = () => {
 
     const [typedMessage, setTypedMessage] = useState('');
     const messageBodyRef = useRef(null);
     const userContext = useContext(UserContext);
+    const alert = useAlert();
+    const history = useHistory();
 
     useEffect(() => {
 
@@ -34,6 +42,26 @@ const Chat = () => {
         setTypedMessage('');
     }
 
+    const logoutFromApp = () => {
+        confirmAlert({
+            title: 'Logout',
+            message: 'Are you sure you want to logout?',
+            buttons: [
+                {
+                    label: 'Yes',
+                    onClick: () => {
+                        auth.logoutUser();
+                        history.push('/');
+                        alert.success('Logged out');
+                    },
+                },
+                {
+                    label: 'No',
+                }
+            ]
+        })
+    }
+
 
     return (
         (
@@ -51,7 +79,7 @@ const Chat = () => {
                             <AttachFile />
                         </IconButton>
                         <IconButton>
-                            <MoreVert />
+                            <ExitToAppIcon onClick={logoutFromApp} />
                         </IconButton>
                     </div>
                 </div>

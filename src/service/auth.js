@@ -87,6 +87,10 @@ class Auth {
             console.log(err);
         }
     }
+
+    logoutUser = () => {
+        localStorage.removeItem('token');
+    }
 }
 
 export default new Auth();
