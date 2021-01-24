@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import Sidebar from '../sidebar/sidebar';
 import Chat from "../chat-message/chat";
 import axios from 'axios';
-import socket from '../../service/socket';
 import './chat-app.css'
 import { UserContext, apiUrl } from "../../context/UserContext";
+import { io } from 'socket.io-client';
 
 const ChatApp = () => {
 
@@ -14,15 +14,27 @@ const ChatApp = () => {
     const [activeGroupUsers, setActiveGroupUsers] = useState([]);
     const token = localStorage.getItem('token');
 
+    const [socket] = useState(io(apiUrl, {
+        query: { token }
+    }));
+
     useEffect(() => {
         fetchGroups();
+
+        return () => {
+            socket.emit('leaveAllGroup');
+            socket.off();
+        }
+    }, []);
+
+    useEffect(() => {
         socket.on('chat-messages', (newMessage) => {
             setMessages(messages => [...messages, newMessage]);
         })
         socket.on('room-users', (groupUsers) => {
             setActiveGroupUsers(groupUsers);
         })
-    }, [])
+    }, [socket])
 
     let fetchGroups = async () => {
         const fetchGroupsData = await axios.get(`${apiUrl}/groups`);
